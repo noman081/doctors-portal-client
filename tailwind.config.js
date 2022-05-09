@@ -5,6 +5,11 @@ module.exports = {
     backgroundImage: {
       'chair': "url('/src/assets/images/bg.png')",
     },
+    backgroundSize: {
+      'auto': 'auto',
+      'cover': 'cover',
+      'contain': 'contain',
+    }
   },
   daisyui: {
     themes: [
