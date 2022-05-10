@@ -3,6 +3,7 @@ import './App.css';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import Home from './Pages/Home/Home';
 import NotFound from './Pages/NotFound/NotFound';
+import Footer from './Pages/Shared/Footer';
 import Header from './Pages/Shared/Header';
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
 
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
+
+      <Footer />
     </div>
   );
 }

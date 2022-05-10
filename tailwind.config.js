@@ -4,6 +4,8 @@ module.exports = {
     extend: {},
     backgroundImage: {
       'chair': "url('/src/assets/images/bg.png')",
+      'doctor': "url('/src/assets/images/appointment.png')",
+      'footer': "url('/src/assets/images/footer.png')",
     },
     backgroundSize: {
       'auto': 'auto',

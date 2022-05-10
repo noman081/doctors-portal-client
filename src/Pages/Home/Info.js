@@ -20,7 +20,7 @@ const Info = () => {
         bgClass: 'bg-primary'
     }
     return (
-        <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-3 px-12">
             <InfoCard img={clock} info={clockInfo} />
             <InfoCard img={marker} info={markerInfo} />
             <InfoCard img={phone} info={phoneInfo} />
