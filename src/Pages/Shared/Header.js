@@ -1,7 +1,24 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+import Loading from './Loading';
 
 const Header = () => {
+    const [user, loading, error] = useAuthState(auth);
+    if (loading) {
+        <Loading />
+    }
+    if (user) {
+        if (!user.photoURL) {
+            user.photoURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png';
+        };
+        console.log(user.photoURL);
+    }
+    const logOut = () => {
+        signOut(auth);
+    }
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -15,7 +32,9 @@ const Header = () => {
                         <li><Link to='/appoinment'>Appoinment</Link></li>
                         <li><Link to='/review'>Reviews</Link></li>
                         <li><Link to='/contact'>Contact Us</Link></li>
-                        <li><Link to='/login'>Login</Link></li>
+                        <li>{user ?
+                            <button className="btn btn-ghost" onClick={logOut}>Sign Out</button>
+                            : <Link to='/login'>Login</Link>}</li>
                     </ul>
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
@@ -27,10 +46,12 @@ const Header = () => {
                     <li><Link to='/appoinment'>Appoinment</Link></li>
                     <li><Link to='/review'>Reviews</Link></li>
                     <li><Link to='/contact'>Contact Us</Link></li>
-                    <li><Link to='/login'>Login</Link></li>
+                    <li>{user ?
+                        <button className="btn btn-ghost" onClick={logOut}>Sign Out</button>
+                        : <Link to='/login'>Login</Link>}</li>
                 </ul>
             </div>
-        </div>
+        </div >
     );
 };
 

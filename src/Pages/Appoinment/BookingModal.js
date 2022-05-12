@@ -15,7 +15,7 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <h3 className="text-accent text-xl font-semibold">{name}</h3>
-                    <label for="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 
                     <form onSubmit={handleBooking} className='grid grid-cols-1 justify-items-center gap-3 mt-5'>
                         <input type="text" value={format(date, 'PP')} disabled className="input input-bordered w-full max-w-xs" />
