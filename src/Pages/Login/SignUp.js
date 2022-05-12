@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
@@ -16,8 +16,12 @@ const SignUp = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const navigate = useNavigate();
     let signUpError;
+    useEffect(() => {
+        if (user || gUser) {
+            navigate('/');
+        }
+    }, [user, gUser, navigate]);
     const handleGoogleSignIn = () => {
-        console.log('sign in');
         signInWithGoogle();
     };
     if (loading || gLoading || updating) {
@@ -26,12 +30,7 @@ const SignUp = () => {
     if (error || gError || updateError) {
         signUpError = (error.message || gError.message || updateError.message);
     }
-    if (user || gUser) {
-        console.log(user || gUser);
-        navigate('/');
-    }
     const onSubmit = async data => {
-        console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
     };
