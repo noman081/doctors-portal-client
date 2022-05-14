@@ -37,6 +37,13 @@ const Login = () => {
         signInWithEmailAndPassword(data.email, data.password);
 
     };
+    const handleResetPassword = () => {
+        debugger;
+        let email;
+        if (!email) {
+            signInError = 'Please enter a valid email to reset password';
+        }
+    }
     return (
         <div className='min-h-screen flex justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -91,7 +98,7 @@ const Login = () => {
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
                         </div>
-
+                        <p className='cursor-pointer hover:text-secondary mb-2' onClick={handleResetPassword}>Forgot Password?</p>
                         <p className='text-red-500 mb-1'><small>{signInError}</small></p>
                         <input className='btn w-full max-w-xs' type="submit" value="Login" />
                     </form>

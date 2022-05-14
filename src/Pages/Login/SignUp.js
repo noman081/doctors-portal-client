@@ -12,7 +12,7 @@ const SignUp = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const navigate = useNavigate();
     let signUpError;
@@ -111,7 +111,7 @@ const SignUp = () => {
                         <p className='text-red-500 mb-1'><small>{signUpError}</small></p>
                         <input className='btn w-full max-w-xs' type="submit" value="Sign Up" />
                     </form>
-                    <p className='text-sm text-center'>New to Doctors Portal? <Link to='/login' className='text-secondary'>Please Login</Link></p>
+                    <p className='text-sm text-center'>Already have an account? <Link to='/login' className='text-secondary'>Please Login</Link></p>
                     <div className="divider">or</div>
                     <button
                         onClick={handleGoogleSignIn}

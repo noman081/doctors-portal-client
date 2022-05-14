@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import doctor from '../../assets/images/doctor-small.png';
 import PrimaryButton from '../Shared/PrimaryButton';
 const MakeAppoinment = () => {
@@ -12,7 +13,7 @@ const MakeAppoinment = () => {
                 <h1 className='text-4xl'>Make an Appoinment Today</h1>
                 <p className='mb-3'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsumis that it has a more-or-less normal distribution of letters,as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page</p>
 
-                <PrimaryButton>Get Started</PrimaryButton>
+                <PrimaryButton><Link to='/appoinment'>Get Started</Link></PrimaryButton>
             </div>
         </section>
     );
