@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
 import { Link, useNavigate } from 'react-router-dom';
+import useToken from '../../hooks/useToken';
 const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -14,13 +15,14 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [token] = useToken(user || gUser);
     const navigate = useNavigate();
     let signUpError;
     useEffect(() => {
-        if (user || gUser) {
+        if (token) {
             navigate('/');
         }
-    }, [user, gUser, navigate]);
+    }, [token, navigate]);
     const handleGoogleSignIn = () => {
         signInWithGoogle();
     };
